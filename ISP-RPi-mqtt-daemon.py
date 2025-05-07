@@ -311,12 +311,8 @@ def getDaemonReleases():
 
     newVersionList = []
     latestVersion = ''
-    try:
-        response = requests.request('GET', 'http://kz0q.com/daemon-releases', verify=False)
-    except:
-        # Exit function if GET fails
-        return
-
+    
+    response = requests.request('GET', 'http://kz0q.com/daemon-releases', verify=False)
     if response.status_code != 200:
         print_line('- getDaemonReleases() RQST status=({})'.format(response.status_code), error=True)
         daemon_version_list = [ 'NOT-LOADED' ]  # mark as NOT fetched
